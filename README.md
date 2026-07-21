@@ -9,7 +9,7 @@ A comprehensive data mining and machine learning pipeline applied to the **"Esti
 
 ---
 
-## 📌 Executive Summary
+## 📌 Executive Summaryy
 
 Obesity is a complex, multifactorial health issue driven by genetic predispositions, nutritional habits, and sedentary behaviors. This project establishes an end-to-end analytical workflow—from raw data curation to hypothesis-driven Exploratory Data Analysis (EDA) and K-Means Clustering—to identify distinct risk profiles and evaluate the interplay between behavioral and inherited factors.
 
