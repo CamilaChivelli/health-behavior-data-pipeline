@@ -8,56 +8,6 @@
 
 Obesity management typically relies on isolated biometric indicators like Body Mass Index (BMI). However, BMI alone fails to capture the underlying lifestyle and behavioral drivers that dictate patient outcomes.
 
-This project implements an **unsupervised $K$-Means clustering architecture** ($K=4$) to segment individuals based strictly on **behavioral, dietary, and physical activity patterns** (isolating biometric metrics to avoid data leakage). By identifying distinct behavioral archetypes, healthcare providers and digital health platforms can deploy targeted, personalized interventions rather than one-size-fits-all clinical recommendations.
-
----
-
-## 🔑 Key Strategic Findings: The 4 Behavioral Archetypes
-
-Through silhouette score optimization and elbow analysis, four distinct behavioral profiles were identified:
-
-### 1. Archetype 0: "Active & Balanced Conscious"
-* **Behavioral Profile**: High physical activity frequency (`FAF`), high daily water intake (`CH2O`), consistent calorie tracking (`SCC`), and high vegetable consumption (`FCVC`).
-* **Clinical Risk**: Low risk of obesity; strong metabolic baseline.
-* **Target Intervention**: Maintenance programs, optimization of athletic performance, and preventive wellness tracking.
-
-### 2. Archetype 1: "Sedentary Digital Lifestyle"
-* **Behavioral Profile**: Elevated screen time (`TUE`), low physical activity (`FAF`), reliance on motorized transportation (`MTRANS`), and moderate-to-high snacking between meals (`CAEC`).
-* **Clinical Risk**: Moderate-to-high risk of developing metabolic syndrome and gradual BMI increase.
-* **Target Intervention**: Micro-activity integration (breaks during screen time), active commuting encouragement, and digital nudge notifications.
-
-### 3. Archetype 2: "High-Caloric / Unstructured Eating"
-* **Behavioral Profile**: Frequent consumption of high-calorie foods (`FAVC`), irregular main meal counts (`NCP`), frequent snacking, and low-to-moderate physical activity.
-* **Clinical Risk**: High risk of severe obesity and associated cardiovascular comorbidities.
-* **Target Intervention**: Nutritional restructuring, satiety-focused meal planning, and behavioral therapy for impulse eating.
-
-### 4. Archetype 3: "Moderate Routine with Family Risk"
-* **Behavioral Profile**: Average behavioral metrics with strong genetic predisposition (`family_history_with_overweight`) and moderate alcohol/snacking habits.
-* **Clinical Risk**: Moderate baseline risk heavily influenced by environmental and family factors.
-* **Target Intervention**: Family-centered lifestyle modifications, early screening, and habit-stacking routines.
-
----
-
-## 🚀 Business & Clinical Impact
-
-1. **Personalized Digital Health**: Enables healthtech platforms to automate user onboarding segmentation and deliver personalized habit-building recommendations.
-2. **Resource Allocation**: Allows healthcare providers to stratify patient risk based on habits before biometric complications arise.
-3. **Reproducible Pipeline**: All data transformations, domain constraint enforcement, and model inference steps are fully automated via an end-to-end Python pipeline (`main.py`).
-
-
-
-# Executive Summary: Behavioral Health Analytics & Unsupervised Clustering
-
-**Project:** Unsupervised Machine Learning for Behavioral Health Archetyping  
-**Author:** Camila Chivelli  
-**Domain:** Health Data Analytics / Machine Learning Engineering  
-
----
-
-## 🎯 Executive Overview
-
-Obesity management typically relies on isolated biometric indicators like Body Mass Index (BMI). However, BMI alone fails to capture the underlying lifestyle and behavioral drivers that dictate patient outcomes.
-
 This project implements an **unsupervised K-Means clustering architecture** (K=4) to segment individuals based strictly on **behavioral, dietary, and physical activity patterns** (isolating biometric metrics to avoid data leakage). By identifying distinct behavioral archetypes, healthcare providers and digital health platforms can deploy targeted, personalized interventions rather than one-stop clinical recommendations.
 
 ---
