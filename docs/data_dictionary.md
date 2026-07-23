@@ -26,7 +26,7 @@ Variables capturing nutritional choices, eating frequency, and caloric intake be
 | :--- | :--- | :--- | :--- | :--- |
 | **FAVC** | High Caloric Food Consumption | Frequent consumption of high caloric food | Binary (`Yes` / `No`) | Encoded as `1` / `0` |
 | **FCVC** | Frequency of Vegetable Consumption | Daily frequency of vegetable intake | 1 (Rarely) to 3 (Always) | Clipped $[1, 3]$, Scaled |
-| **NCP** | Number of Main Meals | Daily main meal count | 1 to 4 meals | Clipped $[1, 4]$, Scaled |
+| **NCP** | Number of Main Meals | Daily main meal count | 1 to 3 meals | Clipped $[1, 3]$, Scaled |
 | **CAEC** | Food Between Meals | Consumption of food between main meals | `no`, `Sometimes`, `Frequently`, `Always` | Ordinal Mapping (`0`–`3`) |
 | **CH2O** | Daily Water Intake | Daily water consumption | 1 (<1L), 2 (1–2L), 3 (>2L) | Clipped $[1, 3]$, Scaled |
 | **CALC** | Alcohol Consumption | Frequency of alcohol intake | `no`, `Sometimes`, `Frequently`, `Always` | Ordinal Mapping (`0`–`3`) |
