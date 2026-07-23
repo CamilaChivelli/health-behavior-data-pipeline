@@ -48,7 +48,7 @@ The underlying survey instrument consisted of 16 structured questions designed t
 | **family_history_with_overweight** | *Has a family member suffered or suffers from overweight?* | Yes, No |
 | **FAVC** | *Do you eat high caloric food frequently?* | Yes, No |
 | **FCVC** | *Do you usually eat vegetables in your meals?* | Never, Sometimes, Always |
-| **NCP** | *How many main meals do you have daily?* | Between 1 and 2, Three, More than three |
+| **NCP** | *How many main meals do you have daily?* | Between 1 and 2, 3, More than three |
 | **CAEC** | *Do you eat any food between meals?* | No, Sometimes, Frequently, Always |
 | **SMOKE** | *Do you smoke?* | Yes, No |
 | **CH2O** | *How much water do you drink daily?* | Less than a liter, Between 1 and 2 L, More than 2 L |
