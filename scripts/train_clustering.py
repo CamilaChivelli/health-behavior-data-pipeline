@@ -8,7 +8,7 @@ import joblib
 import pandas as pd
 from sklearn.cluster import KMeans
 
-from utils import get_project_root, save_processed_data
+from .utils import get_project_root, save_processed_data
 
 OPTIMAL_K = 4
 

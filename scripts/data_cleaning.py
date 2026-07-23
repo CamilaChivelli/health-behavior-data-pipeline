@@ -5,7 +5,7 @@ standardizes data types, and exports cleaned dataset to data/interim/.
 """
 
 import pandas as pd
-from utils import load_raw_data, save_interim_data
+from .utils import load_raw_data, save_interim_data
 
 
 def run_cleaning_pipeline():

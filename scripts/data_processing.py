@@ -9,7 +9,7 @@ import joblib
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
-from utils import get_project_root, load_interim_data, save_processed_data
+from .utils import get_project_root, load_interim_data, save_processed_data
 
 warnings.filterwarnings("ignore")
 
