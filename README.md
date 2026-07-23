@@ -7,6 +7,7 @@
 [![Python](https://img.shields.io/badge/Python-3.9+-0A2947?style=flat-square&logo=python&logoColor=F3E4C9)](#)
 [![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-K--Means-0A2947?style=flat-square&logo=scikit-learn&logoColor=F3E4C9)](#)
 [![Pandas](https://img.shields.io/badge/Pandas-Data_Preparation-0A2947?style=flat-square&logo=pandas&logoColor=F3E4C9)](#)
+[![Matplotlib](https://img.shields.io/badge/Matplotlib-Plotting-0A2947?style=flat-square&logo=python&logoColor=F3E4C9)](#)
 [![Seaborn](https://img.shields.io/badge/Seaborn-Data_Visualization-0A2947?style=flat-square&logo=python&logoColor=F3E4C9)](#)
 
 
@@ -25,7 +26,7 @@ Obesity is a complex, multifactorial health issue driven by genetic predispositi
 ---
 
 ## 🏗️ Repository Architecture
-
+```text
 behavioral-health-analytics/
 ├── docs/                             # Executive documentation & clinical insights
 │   ├── executive_summary.md          # Business & clinical analysis of the 4 archetypes
@@ -45,7 +46,7 @@ behavioral-health-analytics/
 ├── main.py                           # Single-command pipeline entry point
 ├── requirements.txt                  # Environment dependencies
 └── README.md                         # Project documentation
-
+```
 ---
 
 ## 🎯 Objectives
@@ -116,20 +117,27 @@ Follow these steps to set up the environment, run the automated pipeline, or exp
 Ensure you have Python 3.9+ installed on your system.
 
 1. Clone the repository:
+   ```text
    git clone https://github.com/your-username/behavioral-health-analytics.git
    cd behavioral-health-analytics
-
-2. Create and activate a virtual environment:
+   ```
+3. Create and activate a virtual environment:
    * Linux / macOS:
-     python3 -m venv venv
-     source venv/bin/activate
+   ```text
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
    * Windows:
-     python -m venv venv
-     .\venv\Scripts\activate
+   ```text
+   python -m venv venv
+   .\venv\Scripts\activate
+   ```
 
-3. Install dependencies:
+4. Install dependencies:
+   ```text
    pip install -r requirements.txt
-
+   ```
+   
 ---
 
 ### 2. Running the Production Pipeline (main.py)
@@ -137,8 +145,9 @@ Ensure you have Python 3.9+ installed on your system.
 The entire workflow—including data loading, domain-constraint validation, scaling, feature engineering, and model execution—is fully automated via the main pipeline entry point.
 
 Execute the following command from the project root:
-
+ ```text
 python main.py
+```
 
 What happens during execution?
 1. Data Ingestion & Cleaning: Loads raw data and applies range clipping (.clip()) to maintain domain boundaries on synthetic records.
@@ -155,8 +164,7 @@ To inspect the exploratory data analysis (EDA) or review the mathematical valida
 1. Launch Jupyter Lab:
    jupyter lab
 
-2. Open any notebook inside the /notebooks directory:
-   * 01_exploratory_data_analysis.ipynb
+3. Open any notebook inside the /notebooks directory
 
 ---
 
