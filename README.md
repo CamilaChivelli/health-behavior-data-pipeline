@@ -1,9 +1,14 @@
-# End-to-End Data Pipeline: Lifestyle & Obesity Risk Analysis
+# Behavioral Health Analytics: Unsupervised Clustering & Patient Archetyping
 
-[![Python](https://img.shields.io/badge/Python-3.10+-0A2947?style=flat-square&logo=python&logoColor=F3E4C9)](#)
+**Author:** Camila Chivelli  
+**Role:** Data Analyst / Machine Learning Engineer  
+**Project Repository:** Health Behavioral Data Pipeline
+
+[![Python](https://img.shields.io/badge/Python-3.9+-0A2947?style=flat-square&logo=python&logoColor=F3E4C9)](#)
 [![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-K--Means-0A2947?style=flat-square&logo=scikit-learn&logoColor=F3E4C9)](#)
 [![Pandas](https://img.shields.io/badge/Pandas-Data_Preparation-0A2947?style=flat-square&logo=pandas&logoColor=F3E4C9)](#)
 [![Seaborn](https://img.shields.io/badge/Seaborn-Data_Visualization-0A2947?style=flat-square&logo=python&logoColor=F3E4C9)](#)
+
 
 A comprehensive data mining and machine learning pipeline applied to the **"Estimation of Obesity Levels Based on Eating Habits and Physical Condition"** dataset. This project processes sociodemographic, eating, and physical metrics to investigate obesity risk factors and segment population profiles using unsupervised learning.
 
@@ -19,51 +24,145 @@ Obesity is a complex, multifactorial health issue driven by genetic predispositi
 
 ---
 
-## ⚙️ Data Cleaning & Pipeline Engineering
+## 🏗️ Repository Architecture
 
-To ensure statistical integrity before modeling, specific data curation protocols were applied to address synthetic generation artifacts ("SMOTE fingerprint"):
-
-1. **Precision Restoration & Type Casting:**
-   * Synthetic sampling created floating-point numbers with up to six decimal places for inherently discrete variables (`Age`, `FCVC`, `NCP`, `CH2O`, `FAF`, `TUE`). These were rounded to the nearest integer and converted to `int64`.
-   * Biometric attributes were standardized to realistic continuous precision (`Height` to 2 decimals, `Weight` to 1 decimal).
-
-2. **Domain Clamping (Boundary Enforcement):**
-   * Applied clamping on `NCP` (Number of Main Meals) to re-align values exceeding the original survey bounds (`NCP > 3` re-assigned to `3`).
-
-3. **Feature Encoding & Normalization:**
-   * Binary attributes (`FAVC`, `SMOKE`, `family_history_with_overweight`) converted via Label Encoding (0/1).
-   * Ordinal variables (`CAEC`, `CALC`) mapped to intensity scales.
-   * `StandardScaler` (Z-Score) applied across all continuous/discrete features to prevent feature scale dominance during distance-based calculations in clustering.
-
----
-
-## 🔍 Exploratory Data Analysis & Hypothesis Testing
-
-### 📊 Exploratory Insights
-* **Demographics:** Highly skewed young population ($\mu = 24.32$ years, $M = 23.00$ years) with symmetric height distribution across genders ($\mu_{\text{women}} = 1.64\text{m}$, $\mu_{\text{men}} = 1.76\text{m}$).
-* **Weight Variance:** Female weight showed higher dispersion ($SD = 29.72\text{kg}$) and positive skewness compared to males ($SD = 21.41\text{kg}$), indicating a higher polarization toward extreme obesity classes in females.
-
-### 🧪 Hypothesis Validation
-
-* **Hypothesis 1 (Genetic Predisposition):**
-  * *Verdict:* **Validated.** Family history operates as a vertical shift factor on BMI. Individuals with positive family history start at higher metabolic risk levels across all age groups compared to those without inherited predisposition.
-* **Hypothesis 2 (High-Caloric Diet / FAVC):**
-  * *Verdict:* **Validated.** Frequent consumption of high-caloric food is the primary driver displacing BMI distributions into overweight/obese ranges. The effect intensifies significantly in the 26–40 age bracket.
-* **Hypothesis 3 (Physical Activity / FAF as a Moderator):**
-  * *Verdict:* **Partially Validated.** Higher weekly physical activity moderates age-related BMI growth, but exercise alone does not fully offset strong genetic or dietary risk factors.
+behavioral-health-analytics/
+├── docs/                             # Executive documentation & clinical insights
+│   ├── executive_summary.md          # Business & clinical analysis of the 4 archetypes
+│   ├── data_dictionary.md           # Variable definitions, scales, and constraints
+│   └── dataset_provenance.md         # Survey specification & hybrid sampling methodology
+├── notebooks/                        # Research, EDA & statistical validation
+│   ├── 01_exploratory_data_analysis.ipynb
+│   ├── 02_data_cleaning_and_preprocessing.ipynb
+│   └── ...
+├── scripts/                          # Production-ready Python modules
+│   ├── data_cleaning.py
+│   ├── data_processing.py
+│   └── ...
+├── models/                           # Serialized trained models & scalers
+├── visuals/                          # Exported plots, cluster charts & pipeline diagrams
+├── data/                             # Raw and processed datasets
+├── main.py                           # Single-command pipeline entry point
+├── requirements.txt                  # Environment dependencies
+└── README.md                         # Project documentation
 
 ---
 
-## 🤖 Unsupervised Learning: K-Means Clustering
+## 🎯 Objectives
 
-To uncover underlying risk segments without relying on target labels (`NObeyesdad`), K-Means clustering was executed on behavioral, demographic, and genetic features (excluding direct `Height` and `Weight` measurements to avoid target leakage).
+The primary goal of this project is to build an end-to-end, reproducible data mining and machine learning architecture to analyze obesity risk factors through behavioral profiling.
 
-### Optimal Cluster Selection
-Evaluated using the **Silhouette Score** across $K \in [2, 10]$, determining **$K = 4$** as the optimal balance between mathematical cohesion/separation and clinical interpretability.
+Specifically, the project aims to:
+* **Isolate Behavioral Signals:** Evaluate dietary habits, physical activity, and technology-driven sedentarism while isolating direct biometric variables to prevent target leakage.
+* **Validate Analytical Hypotheses:** Perform statistical testing to quantify the impact of genetic predisposition, high-caloric intake, and physical exercise across different age groups.
+* **Uncover Unsupervised Patient Archetypes:** Apply K-Means clustering to discover non-obvious population segments, enabling personalized lifestyle recommendations over generic clinical treatments.
+* **Deliver Production-Ready Code:** Transition exploratory analysis into a modular, command-line operable Python pipeline (`main.py`).
 
-```text
-Silhouette Index Evaluation:
-  K=2 : 0.172
-  K=3 : 0.139
-  K=4 : 0.104  <-- Optimal for multidimensional profile segmentation
-  K=5 : 0.121
+---
+
+## 🛠️ Project Scope & Tools
+
+### Scope
+* **In-Scope:** Data ingestion, domain constraint enforcement (clamping), scaling, categorical encodings, exploratory data analysis, hypothesis testing, K-Means model evaluation, and cluster profiling.
+* **Out-of-Scope:** Supervised classification for direct obesity diagnosis or live REST API deployment (focus remains on behavioral clustering and data pipeline architecture).
+
+### Tech Stack & Tools
+* **Core Language:** Python 3.9+
+* **Data Manipulation & Analysis:** `pandas`, `numpy`
+* **Machine Learning & Preprocessing:** `scikit-learn` (`KMeans`, `StandardScaler`, `OneHotEncoder`)
+* **Visualization & Reporting:** `matplotlib`, `seaborn`
+* **Environment & Tools:** Jupyter Notebooks, Git, Markdown
+
+---
+
+## 🔄 Data Workflow
+
+The execution sequence follows a strict, modular pipeline design to guarantee reproducibility:
+
+[Raw Data] ➔ [Data Cleaning & Clipping] ➔ [Feature Isolation & Encoding] ➔ [Scaling] ➔ [K-Means (K=4)] ➔ [Cluster Export & Insights]
+
+1. **Ingestion & Validation:** Ingests raw data from Palechor & Manotas (2019) and validates synthetic SMOTE structure.
+2. **Domain Boundary Enforcement:** Applies .clip() on continuous survey features (FCVC, NCP, CH2O, FAF, TUE) to retain interpolation resolution while enforcing survey limits.
+3. **Leakage Prevention & Encoding:** Isolates biometric target variables (Height, Weight, NObeyesdad). Applies binary mapping, ordinal encodings, and One-Hot Encoding (MTRANS).
+4. **Feature Scaling:** Normalizes continuous predictors using StandardScaler to ensure balanced distance calculation in K-Means.
+
+---
+
+## 🔬 Methods Used
+
+* **Data Curation & Preprocessing:** Domain clamping, duplicate validation, target variable isolation, and categorical mapping.
+* **Exploratory Data Analysis (EDA):** Multivariate distribution analysis, correlation matrix inspection, and conditional demographic breakdowns.
+* **Hypothesis Testing:** Non-parametric evaluation of behavioral drivers (dietary intake, genetic markers) across age brackets.
+* **Unsupervised Clustering:** K-Means algorithm optimized via Euclidean distance.
+* **Cluster Validation Metrics:** Inertia / Elbow Method and Silhouette Coefficient evaluation for optimal K selection (K=4).
+
+---
+
+## 💡 Key Insights
+
+* **Genetics as a Baseline Shift:** Family history of overweight acts as a constant upward baseline shift in BMI across all age groups, compounding behavioral risk factors.
+* **Screen Time & Physical Activity Gap:** Higher technology usage (TUE) strongly correlates with younger demographics, serving as a key driver for low weekly physical activity (FAF).
+* **Caloric Volume Drives Extreme Outcomes:** High vegetable intake alone does not protect against severe obesity if paired with elevated meal frequency and total food volume (as observed in Cluster 3, which contains 100% of Obesity Type III cases).
+* **Meal Skipping Dynamics:** Severe meal irregularity (NCP reduction) leads to unstable dietary patterns rather than significant weight loss, often yielding normal-to-mild overweight distributions rather than healthy baselines.
+
+---
+
+## 🚀 How to Use / Getting Started
+
+Follow these steps to set up the environment, run the automated pipeline, or explore the research notebooks.
+
+### 1. Prerequisites & Installation
+
+Ensure you have Python 3.9+ installed on your system.
+
+1. Clone the repository:
+   git clone https://github.com/your-username/behavioral-health-analytics.git
+   cd behavioral-health-analytics
+
+2. Create and activate a virtual environment:
+   * Linux / macOS:
+     python3 -m venv venv
+     source venv/bin/activate
+   * Windows:
+     python -m venv venv
+     .\venv\Scripts\activate
+
+3. Install dependencies:
+   pip install -r requirements.txt
+
+---
+
+### 2. Running the Production Pipeline (main.py)
+
+The entire workflow—including data loading, domain-constraint validation, scaling, feature engineering, and model execution—is fully automated via the main pipeline entry point.
+
+Execute the following command from the project root:
+
+python main.py
+
+What happens during execution?
+1. Data Ingestion & Cleaning: Loads raw data and applies range clipping (.clip()) to maintain domain boundaries on synthetic records.
+2. Feature Engineering: Isolates biometric leakage variables (BMI, Weight, Height) and applies proper binary, ordinal, and One-Hot encodings.
+3. Scaling & Normalization: Applies StandardScaler to continuous behavioral features.
+4. Clustering & Output Generation: Runs the optimized K-Means model (K=4), assigns cluster labels to observations, and exports processed datasets/metrics.
+
+---
+
+### 3. Interactive Research & Exploration
+
+To inspect the exploratory data analysis (EDA) or review the mathematical validation behind K=4 (Elbow & Silhouette metrics):
+
+1. Launch Jupyter Lab:
+   jupyter lab
+
+2. Open any notebook inside the /notebooks directory:
+   * 01_exploratory_data_analysis.ipynb
+
+---
+
+## 📂 Project Documentation Quick Links
+
+For detailed domain information and clinical insights, refer to the /docs directory:
+* Executive Summary (docs/executive_summary.md) – Clinical archetypes and business value.
+* Data Dictionary (docs/data_dictionary.md) – Complete variable definitions and constraints.
+* Dataset Source (docs/dataset_source.md) – Methodology and survey background (Palechor & Manotas, 2019).
